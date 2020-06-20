@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- {% if user.is_authenticated %}
+  <h1>user : {{ user }}</h1> 
+{% endif %}    
+<a href="home">Go back to home</a>
+<br>
+<br> -->
+<div >
+    <p>{{updateqa.id}} : {{updateqa.question}} : {{updateqa.answer}}</p> 
+    <br><br>
+<form action="update/{{updateqa.id}}/" method="post">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="id">Enter id of question to update:</label>
+    <input type="text" class="form-control" name="id" id="id" placeholder="Enter id">
+  </div>
+  <div class="form-group">
+    <label for="username">Updated Question:</label>
+    <input type="text" class="form-control" name="question" id="question" placeholder="Enter Question">
+  </div>
+  <div class="form-group">
+    <label for="username">Updated Answer:</label>
+    <input type="text" class="form-control" name="answer" id="answer" placeholder="Enter Answer">
+  </div>
+  <button type="submit" class="btn btn-primary">update QnA</button>
+<!-- Enter Question:
+<input type="text" name="question" id="question">
+Enter Answer:
+<input type="text" name="answer" id="answer"> -->
+<!-- <input type="submit" value="add qna"> -->
+</form>
+<br><br>
+<div>
+  {% for message in messages %}
+  <div class="alert alert-danger" role="alert">
+    {{message}}
+  </div>
+   
+  {% endfor %}
+</div>
+</div>
+{% endblock content %}
